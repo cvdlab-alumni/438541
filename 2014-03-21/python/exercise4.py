@@ -1,5 +1,6 @@
 from pyplasm import *
 
+
 floor0 = (PROD([QUOTE([40]),QUOTE([40])]))
 floor1 = COLOR([0.57,0.77,0.45])(T([3])(9)(floor0))
 floor2 = T([1,2,3])([2,2,9])(S([1,2])([0.90,0.90])(floor1))
@@ -75,4 +76,17 @@ roofs = STRUCT([roof0,roof1,roof2,roof3,roof4,roof_top])
 
 building = STRUCT([roofs, structure])
 solid_3D_model = STRUCT([basement,T([3])([3])(building)])
-VIEW(solid_3D_model)
+
+
+gradino = CUBOID([0.001,0.001,0.001])
+scala = gradino
+for i in range(56):
+	gradino = CUBOID([1,(4-((i)*0.05)),0.3])
+	scala = STRUCT([scala, T([2,3])([i*0.05,i*0.05])(gradino)])
+
+
+scala1 = T([1,2])([16,-0.111])(R([2,1])(PI/2)(scala))
+scala2 = T([1,2])([24,-0.95])(R([2,1])(-PI/2)(scala))
+
+VIEW(STRUCT([scala1,scala2,solid_3D_model]))
+
