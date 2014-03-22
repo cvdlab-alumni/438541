@@ -20,10 +20,11 @@ s_window = PROD([window,Q(1.3)])
 s2_window = PROD([S([1,2])([1.3,1.3])(window),Q(1.3)])
 ark_n = COLOR([0.75,0.75,0.50])((T([1,2,3])([18,3])(DIFFERENCE([s2_window,s_window]))))
 ark_0 = COLOR([0.75,0.75,0.50])((T([1,2,3])([18,1.8])(DIFFERENCE([s2_window,s_window]))))
+window_internal = COLOR([.84,.87,1])(T([1,2,3])([18,3,.7])(PROD([window,Q(0.1)])))
 
 #generating the base enclosures
 
-north_w = R([2,3])(PI/2)(STRUCT([PROD([(DIFFERENCE([plane,T([1,2])([18,3])(window)])),Q(1)]),ark_n]))
+north_w = R([2,3])(PI/2)(STRUCT([PROD([(DIFFERENCE([plane,T([1,2])([18,3])(window)])),Q(1)]),ark_n,window_internal]))
 west_w = R([1,2])(PI/2)(north_w)
 south_w = T([1,2])([36,36])(R([1,2])(PI/2)(west_w))
 east_w = T([1,2])([72,0])(R([1,2])(PI/2)(south_w))

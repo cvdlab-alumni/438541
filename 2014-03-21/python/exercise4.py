@@ -1,7 +1,5 @@
 from pyplasm import *
 
-#recovered previous defined structures
-
 #floors from the exercise1.py retrived 
 
 floor0 = (PROD([QUOTE([40]),QUOTE([40])]))
@@ -22,10 +20,11 @@ s_window = PROD([window,Q(1.3)])
 s2_window = PROD([S([1,2])([1.3,1.3])(window),Q(1.3)])
 ark_n = COLOR([0.75,0.75,0.50])((T([1,2,3])([18,3])(DIFFERENCE([s2_window,s_window]))))
 ark_0 = COLOR([0.75,0.75,0.50])((T([1,2,3])([18,1.8])(DIFFERENCE([s2_window,s_window]))))
+window_internal = COLOR([.84,.87,1])(T([1,2,3])([18,3,.7])(PROD([window,Q(0.1)])))
 
 #generating the base enclosures
 
-north_w = R([2,3])(PI/2)(STRUCT([PROD([(DIFFERENCE([plane,T([1,2])([18,3])(window)])),Q(1)]),ark_n]))
+north_w = R([2,3])(PI/2)(STRUCT([PROD([(DIFFERENCE([plane,T([1,2])([18,3])(window)])),Q(1)]),ark_n,window_internal]))
 west_w = R([1,2])(PI/2)(north_w)
 south_w = T([1,2])([36,36])(R([1,2])(PI/2)(west_w))
 east_w = T([1,2])([72,0])(R([1,2])(PI/2)(south_w))
@@ -60,7 +59,7 @@ dif_roof = T([1,2])([2,2])(S([1,2])([0.9,0.9])(JOIN([roof_down,roof_up])))
 
 #structuring the rooftops
 
-roof0 = COLOR([0.5,0.5,0.5])(DIFFERENCE([((JOIN([roof_middle,roof_down,roof_up]))),dif_roof]))
+roof0 = COLOR([0.50,0.50,0.50])(DIFFERENCE([((JOIN([roof_middle,roof_down,roof_up]))),dif_roof]))
 roof1 = T([1,2,3])([2,2,9])(S([1,2])([0.90,0.90])(roof0))
 roof2 = T([1,2,3])([1.8,1.8,9])(S([1,2])([0.90,0.90])(roof1))
 roof3 = T([1,2,3])([1.5,1.5,9])(S([1,2])([0.90,0.90])(roof2))
@@ -76,7 +75,7 @@ roof_sphere = JOIN([T([1,2,3])([20.5,20.5,63])(SPHERE(2)([8,24])),])
 roof_sphere2 = JOIN([T([1,2,3])([20.5,20.5,64.3])(SPHERE(2)([8,24])),])
 roof_spike = T([1,2,3])([20.5,20.5,64.5])(JOIN([SPHERE(1.8)([8,24]),T(3)(5)(SPHERE(0.3)([8,24]))]))
 roof_top_3 = STRUCT([roof_sphere,roof_sphere2,roof_spike])
-roof_top=COLOR([0.5,0.5,0.5])(STRUCT([roof_top_1,roof_top_2,roof_top_3]))
+roof_top=COLOR([0.50,0.50,0.50])(STRUCT([roof_top_1,roof_top_2,roof_top_3]))
 
 basement_plane = PROD([QUOTE([40.5]),QUOTE([40.5])])
 basement = COLOR([0.4,0.4,0.4])(PROD([basement_plane,Q(3)]))
@@ -88,7 +87,7 @@ roofs = STRUCT([roof0,roof1,roof2,roof3,roof4,roof_top])
 
 building = STRUCT([roofs, structure])
 solid_3D_model = STRUCT([basement,T([3])([3])(building)])
-VIEW(solid_3D_model)
+
 
 #generation of the stairs
 
