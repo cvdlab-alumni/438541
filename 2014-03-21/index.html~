@@ -1,0 +1,25 @@
+<html>
+  <head>
+<title>la mia prima pagina web</title>
+  </head>
+
+  <body>
+<p>Name of building: Pagoda dell'oca selvatica gigante<p>
+<p>Name: Alessio <p>
+<p>Surname: Cialini<p>
+<p>University ID: 438541<p>
+<p>Links utilizzati:</p>
+  </body>
+<a href="http://en.wikipedia.org/wiki/Giant_Wild_Goose_Pagoda"> Link1</a>
+<a href="http://education.asianart.org/explore-resources/background-information/great-wild-goose-pagoda"> Link2</a>
+<a href=http://www.britannica.com/EBchecked/topic/65036/Great-Wild-Goose-Pagoda"> Link3 </a>
+  <body>
+<p>Link agli esercizi:<p>
+  </body>
+<a href="/python/exercise1.py">Link esercizio 1 </a>
+<a href="/python/exercise2.py">Link esercizio 2 </a>
+<a href="/python/exercise2.py">Link esercizio 3 </a>
+<a href="/python/exercise2.py">Link esercizio 4 </a>
+
+
+</html>
