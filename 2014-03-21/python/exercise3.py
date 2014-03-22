@@ -83,8 +83,15 @@ basement = COLOR([0.4,0.4,0.4])(PROD([basement_plane,Q(3)]))
 
 roofs = STRUCT([roof0,roof1,roof2,roof3,roof4,roof_top])
 
+#generating internal columns
 
+column = JOIN([MAP(lambda x: [COS(x[0]),SIN(x[0]),0])(INTERVALS(2*PI)(10)),MAP(lambda x: [COS(x[0]),SIN(x[0]),57.3])(INTERVALS(2*PI)(10))])
+column1 = T([1,2])([13.5,13.5])(column)
+column2= T([1,2])([13.5,27])(column)
+column3= T([1,2])([27,27])(column)
+column4= T([1,2])([27,13.5])(column)
+columns= COLOR(RED)(STRUCT([column1,column2,column3,column4]))
 
-building = STRUCT([roofs, structure])
+building = STRUCT([roofs, structure,columns])
 solid_3D_model = STRUCT([basement,T([3])([3])(building)])
 VIEW(solid_3D_model)
