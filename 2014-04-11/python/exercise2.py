@@ -46,6 +46,8 @@ base4 = T([1,2,3])([2,2,9])(S([1,2])([0.90,0.90])(base3))
 base5 = T([1,2,3])([2,2,9])(S([1,2])([0.90,0.90])(base4))
 base6 = T([1,2,3])([2.5,2.5,9])(S([1,2])([0.90,0.90])(base5))
 
+#defining the internal stairs
+
 gradino = CUBOID([0.001,0.001,0.001])
 scala = gradino
 for i in range(56):
