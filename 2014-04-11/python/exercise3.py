@@ -30,5 +30,6 @@ temple31 = T([1,2])([40,-65])(R([1,2])(PI/2)(STRUCT([gate1_base,T([1,2,3])([-0,-
 temples= STRUCT([temple10,temple11,temple20,temple21,temple30,temple31])
 
 small_area_plan= STRUCT([(T([1,2,3])([-20,-20,2])(building)),area,g_surroundings,temple_area,temples])
+
 VIEW(small_area_plan)
 

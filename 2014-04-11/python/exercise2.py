@@ -81,4 +81,4 @@ v_enclosures = STRUCT([base0,base1,base2,base3,base4,base5,base6])
 
 building = STRUCT([v_enclosures,h_partitions,scale])
 
-#VIEW(building)
+VIEW(building)

@@ -80,4 +80,4 @@ coperture = STRUCT([roof0,roof1,roof2,roof3,roof4,roof5,roof_top])
 
 h_partitions = STRUCT([base,coperture,intermedi])
 
-#VIEW(h_partitions)
+VIEW(h_partitions)
