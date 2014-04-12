@@ -85,7 +85,7 @@ roofs = STRUCT([roof0,roof1,roof2,roof3,roof4,roof_top])
 
 #generating internal columns
 
-column = JOIN([MAP(lambda x: [COS(x[0]),SIN(x[0]),0])(INTERVALS(2*PI)(10)),MAP(lambda x: [COS(x[0]),SIN(x[0]),57.3])(INTERVALS(2*PI)(10))])
+column = JOIN([MAP(lambda x: [COS(x[0]),SIN(x[0]),0])(INTERVALS(2*PI)(10)),MAP(lambda x: [COS(x[0]),SIN(x[0]),10])(INTERVALS(2*PI)(10))])
 column1 = T([1,2])([13.5,13.5])(column)
 column2= T([1,2])([13.5,27])(column)
 column3= T([1,2])([27,27])(column)
