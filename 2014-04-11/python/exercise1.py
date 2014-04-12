@@ -2,20 +2,10 @@ from pyplasm import *
 
 #basement
 
-basement_plane = PROD([QUOTE([40]),QUOTE([40])])
-base = COLOR([0.8,0.8,0.8])(PROD([basement_plane,Q(3)]))
+basement_plane = PROD([QUOTE([50]),QUOTE([50])])
+base_border = T([1,2,3])([-5.5,-5.5,2.25])(PROD([PROD([QUOTE([51]),QUOTE([51])]),Q(.5)]))
+base = COLOR([0.8,0.8,0.8])(T([1,2])([-5,-5])(PROD([basement_plane,Q(3)])))
 
-gradino = CUBOID([0.001,0.001,0.001])
-scala = gradino
-for i in range(56):
-	gradino = CUBOID([1,(4-((i)*0.05)),0.3])
-	scala = STRUCT([scala, T([2,3])([i*0.05,i*0.05])(gradino)])
-
-
-scala1 = T([1,2])([16,0.026])(R([2,1])(PI/2)(scala))
-scala2 = T([1,2])([24,-0.95])(R([2,1])(-PI/2)(scala))
-
-scala_esterna = COLOR([.8,.8,.8])(STRUCT([scala1,scala2]))
 
 #generating internal columns
 
@@ -26,7 +16,7 @@ column3= T([1,2])([27,27])(column)
 column4= T([1,2])([27,13.5])(column)
 base_columns= COLOR(RED)(STRUCT([column1,column2,column3,column4]))
 
-base = STRUCT([base,base_columns])
+base = STRUCT([base,base_border,base_columns])
 
 #floors
 

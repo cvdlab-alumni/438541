@@ -56,7 +56,7 @@ for i in range(56):
 scala1 = T([1,2])([16,0.026])(R([2,1])(PI/2)(scala))
 scala2 = T([1,2])([24,-0.95])(R([2,1])(-PI/2)(scala))
 
-scala_esterna = COLOR([.8,.8,.8])(STRUCT([scala1,scala2]))
+scala_esterna = COLOR([.8,.8,.8])(T([1,2])([0,-5])(STRUCT([scala1,scala2])))
 
 gradino = CUBOID([2.5,1.5,0.2])
 scala= gradino
@@ -81,4 +81,4 @@ v_enclosures = STRUCT([base0,base1,base2,base3,base4,base5,base6])
 
 building = STRUCT([v_enclosures,h_partitions,scale])
 
-VIEW(building)
+#VIEW(building)
