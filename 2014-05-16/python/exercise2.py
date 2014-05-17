@@ -149,4 +149,6 @@ atrium = DIFFERENCE([atrium,T(3)(3.5)(door)])
 structure = STRUCT([T([1,2,3])([10.8,0,-4.5])(atrium),structure])
 
 
-VIEW(structure)
+"Building solid form"
+
+#VIEW(structure)
