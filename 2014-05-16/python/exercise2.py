@@ -16,7 +16,7 @@ floor3 = T(2)(3.6)(floor2)
 floor4 = T(2)(3.6)(floor3)
 
 apartment_floors = STRUCT([floor0,floor1,floor2,floor3,floor4])
-#VIEW(apartment_floors)
+VIEW(apartment_floors)
 
 VV,EV,FV,CV = gridSkeletons([2,1,3])
 bezier_block = assemblyDiagramInit([2,1,3])([[1,1],[.4],[.5,2,.5]])

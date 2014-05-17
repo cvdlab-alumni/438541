@@ -1,6 +1,6 @@
 from exercise2 import *
 
-master = assemblyDiagramInit([2,2,1])([[5,5],[5,5],[5]])
+
 
 def automatizedDiagramMerge(master,mergeTo,diagram):
 	V,CV = master
