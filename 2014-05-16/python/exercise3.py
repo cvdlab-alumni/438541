@@ -1,15 +1,11 @@
 from exercise2 import *
 
-
-
 def automatizedDiagramMerge(master,mergeTo,diagram):
 	V,CV = master
 	sort = sorted(mergeTo,reverse=True)
-	for i in range(len)(mergeTo):
-		if mergeTo[i] in CV:
-        		master = diagram2cell(master,diagram,mergeTo[i])	
-   	return master
-
+	for i in mergeTo:
+        	master = diagram2cell(master,diagram,i)	
+   	return master 	
 
 def automatizedDiagramNumbering(master):
 	V,CV = master
@@ -19,9 +15,5 @@ def automatizedDiagramNumbering(master):
 	
 def automatizedDiagramRemove(master,removeTo):
 	V,CV = master
-	sort = sorted(removeTo,reverse=False)
-	for i in range(len)(removeTo):
-		if removeTo[i] in CV:
-			tempRem = [removeTo[i]]
-			master = V,[cell for k,cell in enumerate(CV) if not (k in tempRem)]	
+	master = V,[cell for k,cell in enumerate(CV) if not (k in removeTo)]	
 	return master			

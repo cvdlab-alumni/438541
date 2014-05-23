@@ -2,12 +2,12 @@ from exercise1 import *
 from specular import specular_apartment
 
 def dom(n):
- 	return INTERVALS(1)(n)
+  return INTERVALS(1)(n)
 
-basic_apartment = apartment
+basic_apartment = solid_apartment
 
 
-main_apartment = STRUCT(MKPOLS(basic_apartment))
+main_apartment = STRUCT((basic_apartment))
 
 floor0 = STRUCT([specular_apartment,main_apartment])
 floor1 = T(2)(3.6)(floor0)
@@ -151,4 +151,4 @@ structure = STRUCT([T([1,2,3])([10.8,0,-4.5])(atrium),structure])
 
 "Building solid form"
 
-#VIEW(structure)
+VIEW(structure)

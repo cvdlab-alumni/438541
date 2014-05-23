@@ -62,7 +62,7 @@ columned_6 = diagram2cell(rem_plint_2,columned_5,toMerge)
 
 
 toRemove = [9,16,36,14,32,26,29,41]
-V,CV =  columned_6
+V,CV = columned_6
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 "Adding structure to the first splitted room"
@@ -92,7 +92,7 @@ room_1 = assemblyDiagramInit([3,1,3])([[2,.2,2],[3],[3,.3,1.2]])
 doored = diagram2cell(room_1,doored,toMerge)
 
 toRemove = [58,60,61,64,65,66]
-V,CV =  doored
+V,CV = doored
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 toMerge=4
@@ -110,7 +110,7 @@ hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
 hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
 
 toRemove = [75,54,69]
-V,CV =  apartment
+V,CV = apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 toMerge=16
@@ -148,7 +148,7 @@ hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
 hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,2)
 
 toRemove = [45,95,104,73,74,80,75,86]
-V,CV =  apartment
+V,CV = apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 toMerge=16
@@ -167,7 +167,7 @@ apartment = diagram2cell(window1,apartment,toMerge)
 
 
 toRemove = [114,119,109,103,128,112]
-V,CV =  apartment
+V,CV = apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 specular_apartment = T([2])([3.4])(R([1,3])(PI)(R([1,2])(PI)(STRUCT(MKPOLS(apartment)))))
