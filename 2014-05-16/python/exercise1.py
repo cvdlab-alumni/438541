@@ -344,6 +344,6 @@ for i in ground_borders:
 #VIEW(hpc)
 
 
-VIEW(STRUCT(solid_apartment))
+#VIEW(STRUCT(solid_apartment))
 
 
