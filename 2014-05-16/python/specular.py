@@ -61,113 +61,265 @@ rem_plint_2 = assemblyDiagramInit([1,1,5])([[.4],[.4],[3.5,.25,2.5,.25,3.5]])
 columned_6 = diagram2cell(rem_plint_2,columned_5,toMerge)
 
 
-toRemove = [9,16,36,14,32,26,29,41]
-V,CV = columned_6
+toMerge=9
+roof_split= assemblyDiagramInit([3,1,3])([[4.325,.25,4.325],[.4],[3.5,.25,6.25]])
+apartment = diagram2cell(roof_split,columned_6,toMerge) 
+
+toRemove = [35,13,28,31,40,15,25,52,55,58,56,50,51]
+V,CV =  apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+#DRAW(apartment)
+#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,2)
+#VIEW(hpc)
 
 "Adding structure to the first splitted room"
 
 toMerge=17
 rem_col_1 = assemblyDiagramInit([3,1,1])([[4.2,.25,4.2],[.4],[.4]])
-columned_7 = diagram2cell(rem_col_1,apartment,toMerge)
-
-toMerge=44
-rem_col_2 = assemblyDiagramInit([3,1,1])([[4.2,.25,4.2],[.4],[.4]])
-columned_8 = diagram2cell(rem_col_2,columned_7,toMerge)
-
-toMerge=42
-rem_col_2 = assemblyDiagramInit([3,1,1])([[6,.25,2],[.4],[.4]])
-columned_9 = diagram2cell(rem_col_2,columned_8,toMerge)
-
-toMerge=43
-door1 = assemblyDiagramInit([3,2,1])([[.3,1,.3],[1,2],[.2]])
-doored = diagram2cell(door1,columned_9,toMerge)
+apartment = diagram2cell(rem_col_1,apartment,toMerge)
 
 toMerge=47
+rem_col_2 = assemblyDiagramInit([3,1,1])([[4.2,.25,4.2],[.4],[.4]])
+apartment = diagram2cell(rem_col_2,apartment,toMerge)
+
+toMerge=45
+rem_col_2 = assemblyDiagramInit([3,1,1])([[6,.25,2],[.4],[.4]])
+apartment = diagram2cell(rem_col_2,apartment,toMerge)
+
+toMerge=46
+door1 = assemblyDiagramInit([3,2,1])([[.6,1,.6],[1,2],[.2]])
+apartment = diagram2cell(door1,apartment,toMerge)
+
+toMerge=50
 door1 = assemblyDiagramInit([3,2,1])([[.1,1,.1],[1,2],[.2]])
-doored = diagram2cell(door1,doored,toMerge)
+apartment = diagram2cell(door1,apartment,toMerge)
 
 toMerge=20
 room_1 = assemblyDiagramInit([3,1,3])([[2,.2,2],[3],[3,.3,1.2]])
-doored = diagram2cell(room_1,doored,toMerge)
+apartment = diagram2cell(room_1,apartment,toMerge)
 
-toRemove = [58,60,61,64,65,66]
-V,CV = doored
+toMerge=52
+entrance_door = assemblyDiagramInit([3,3,3])([[.05,0.9,.05],[.05,1.9,.05],[.05,.1,.05]])
+apartment = diagram2cell(entrance_door,apartment,toMerge)
+
+toMerge=57
+room1_door = assemblyDiagramInit([3,3,3])([[.2,0.6,.2],[.2,1.8,.2],[.2,.6,.2]])
+apartment = diagram2cell(room1_door,apartment,toMerge)
+
+toRemove = [85,83,80,82,107,109,112,110,59,61,62,65,66,67]
+V,CV =  apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 toMerge=4
 col_1 = assemblyDiagramInit([1,1,7])([[.4],[.4],[2.45,.2,1.05,.2,2.65,.2,3.65]])
 apartment = diagram2cell(col_1,apartment,toMerge)
 
-toMerge=59
+toMerge=60
 door1 = assemblyDiagramInit([1,2,3])([[.2],[1.3,1.7],[.3,1,.3]])
 apartment = diagram2cell(door1,apartment,toMerge)
 
-toMerge=59
-window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,.8,.8],[1,.8,1]])
+toMerge=106
+window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,1,.8],[.9,.9,.9]])
 apartment = diagram2cell(window1,apartment,toMerge)
-hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
-hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
 
-toRemove = [75,54,69]
-V,CV = apartment
+toMerge=122
+window_section = assemblyDiagramInit([1,1,3])([[.2],[.8],[.4,.005,.4]])
+window_part = assemblyDiagramInit([5,3,3])([[.025,.025,.1,.025,.025],[.05,.7,.05],[.05,.3,.05]])
+toRemove=[2,3,4,5,41,40,39,13,31,6,7,8,42,43,44,0,1,2,36,37,38]
+V,CV =  window_part
+window_part = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+window_section= diagram2cell(window_part,window_section,2)
+window_section= diagram2cell(window_part,window_section,0)
+toRemove=[0]
+V,CV =  window_section
+window_section = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+apartment = diagram2cell(window_section,apartment,toMerge)
+
+toRemove = [116]
+V,CV =  apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
+#VIEW(hpc)
+#DRAW(apartment)
+
+"Adding the second splitted rooms on y axis and related details"
 
 toMerge=16
 y_split_2 = assemblyDiagramInit([5,1,1])([[2.6,.2,3.8,.2,2],[3],[3.5]])
 apartment = diagram2cell(y_split_2,apartment,toMerge)
 
-toMerge=79
+toMerge=177
 door1 = assemblyDiagramInit([1,2,3])([[.2],[1,2],[.3,1,.3]])
 apartment = diagram2cell(door1,apartment,toMerge)
 
 toMerge=31
-window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,.8,.8],[1,.8,1]])
+window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,1,.8],[.9,.9,.9]])
 apartment = diagram2cell(window1,apartment,toMerge)
 
-toMerge=59
+toMerge=107
 window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,.8,3],[1,.8,1]])
 apartment = diagram2cell(window1,apartment,toMerge)
 
-toMerge=75
+toMerge=173
 door1 = assemblyDiagramInit([1,2,3])([[.2],[1,2],[.8,1,.8]])
 apartment = diagram2cell(door1,apartment,toMerge)
+
+toMerge=185
+apartment = diagram2cell(window_section,apartment,toMerge)
+
+toMerge=193
+apartment = diagram2cell(window_part,apartment,toMerge)
 
 toMerge=16
 y_split_2 = assemblyDiagramInit([7,1,1])([[2.6,.2,1.8,.2,1.8,.2,2],[3],[3.5]])
 apartment = diagram2cell(y_split_2,apartment,toMerge)
 
-toMerge=110
-door1 = assemblyDiagramInit([3,2,1])([[.3,1,.3],[1,2],[.2]])
+toMerge=281
+door1 = assemblyDiagramInit([3,2,1])([[.25,1,.25],[1,2],[.2]])
 apartment = diagram2cell(door1,apartment,toMerge)
 
-toMerge=108
-door1 = assemblyDiagramInit([3,2,1])([[.8,1,.8],[1,2],[.2]])
+toMerge=279
+door1 = assemblyDiagramInit([3,2,1])([[.4,1,.4],[1,2],[.2]])
 apartment = diagram2cell(door1,apartment,toMerge)
-hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
-hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,2)
 
-toRemove = [45,95,104,73,74,80,75,86]
-V,CV = apartment
+
+door_section = assemblyDiagramInit([1,1,3])([[.2],[2],[.5,.01,.5]])
+door_part = assemblyDiagramInit([5,3,3])([[.05,.05,.9,.05,.05],[.2,.6,.2],[.1,.2,.1]])
+toRemove=[2,3,4,5,41,40,39,13,31,6,7,8,42,43,44,0,1,2,36,37,38]
+V,CV =  door_part
+door_part = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+door_section= diagram2cell(door_part,door_section,2)
+door_section= diagram2cell(door_part,door_section,0)
+toRemove=[0]
+V,CV =  door_section
+door_section = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+
+toMerge=291
+apartment = diagram2cell(room1_door,apartment,toMerge)
+
+toMerge=200
+apartment = diagram2cell(room1_door,apartment,toMerge)
+
+toMerge=178
+apartment = diagram2cell(door_section,apartment,toMerge)
+
+door_section_h = assemblyDiagramInit([3,1,1])([[.5,.01,.5],[.2],[2]])
+door_part_h = assemblyDiagramInit([3,3,5])([[.1,.2,.1],[.2,.6,.2],[.05,.05,.9,.05,.05]])
+toRemove=[4,19,34,9,24,39,23,14,29,44,10,25,40,5,20,21,35,0,15,30]
+V,CV =  door_part_h
+door_part_h = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+door_section_h= diagram2cell(door_part_h,door_section_h,2)
+door_section_h= diagram2cell(door_part_h,door_section_h,0)
+toRemove=[0]
+V,CV =  door_section_h
+door_section_h = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+
+toMerge=283
+apartment = diagram2cell(door_section_h,apartment,toMerge)
+
+toRemove=[171,172,173,305,307,302,304,321,339,324,342]
+V,CV =  apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
+
+#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,.04)
+#VIEW(hpc)
+#DRAW(apartment)
+
+"Adding third splitted rooms on y axis and related details"
 
 toMerge=16
 y_split_3 = assemblyDiagramInit([3,1,1])([[4,.2,4],[3],[3.5]])
 apartment = diagram2cell(y_split_3,apartment,toMerge)
 
-
-toMerge=57
-window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,.8,.8],[1,.8,1]])
+toMerge=106
+window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,1,.8],[1,.9,1]])
 apartment = diagram2cell(window1,apartment,toMerge)
 
 toMerge=30
-window1 = assemblyDiagramInit([1,3,3])([[.2],[.8,.8,.8],[1,.8,1]])
 apartment = diagram2cell(window1,apartment,toMerge)
 
+toMerge=446
+window1 = assemblyDiagramInit([1,3,3])([[.2],[3,.8,.8],[1,.8,1]])
+apartment = diagram2cell(window_section,apartment,toMerge)
 
+toMerge=437
+window1 = assemblyDiagramInit([1,3,3])([[.2],[3,.8,.8],[1,.8,1]])
+apartment = diagram2cell(window_section,apartment,toMerge)
 
-toRemove = [114,119,109,103,128,112]
-V,CV = apartment
+toRemove = [430,432]
+V,CV =  apartment
 apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
-specular_apartment = T([2])([3.4])(R([1,3])(PI)(R([1,2])(PI)(STRUCT(MKPOLS(apartment)))))
+toMerge=8
+roof_split= assemblyDiagramInit([3,1,3])([[4.325,.25,4.325],[.4],[3.5,.25,6.25]])
+apartment = diagram2cell(roof_split,apartment,toMerge) 	
+
+#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
+#VIEW(hpc)
+#DRAW(apartment)
+
+"adding colors to the apartment elements"
+
+solid_apartment = MKPOLS(apartment)
+
+window_glasses = [416,391,341,366,458,483,205,230,508,533,255,129,154]
+for i in window_glasses:
+	solid_apartment[i] = MATERIAL([1,1,1,0.1, 0,0,0.8,0.5, 1,1,1,0.1, 1,1,1,0.1, 100])(solid_apartment[i]) 
+
+door_colors = [66,67,89,90,317,320,295,296,404,405,406,413,414,415,420,421,422,379,380,381,388,389,390,395,
+396,397,400,399,398,384,383,382,425,424,423,409,408,407,403,402,401,394,393,392,387,386,385,394,393,392,403,
+402,401,336,335,334,345,344,343,353,352,351,361,360,359,370,369,368,378,377,376,333,332,342,340,350,349,358,
+357,367,365,375,374,331,330,329,339,338,337,348,347,346,356,355,354,364,363,362,373,372,371,419,418,417,412,
+411,410,428,427,426]
+for i in door_colors:
+	solid_apartment[i] = COLOR([0.7,0.3,0])(solid_apartment[i])
+
+border_colors=[85,84,83,99,98,97,82,81,80,96,95,94,79,78,77,88,87,86,93,92,91,291,290,289,305,304,303,288,287,
+286,302,301,300,285,284,283,294,293,292,299,298,297,62,61,60,76,75,74,73,72,71,59,58,57,56,55,54,65,64,63,70,
+69,68,310,309,326,325,308,307,306,315,314,313,324,323,322,312,311,328,327,500,499,517,516,509,507,525,524,534,532,
+542,541,503,502,501,512,511,510,520,519,518,528,527,526,537,536,535,545,544,543,498,497,496,506,505,504,515,514,
+513,523,522,521,531,530,529,540,539,538,245,244,243,253,252,251,262,261,260,247,246,264,263,250,249,248,259,258,257,
+267,266,265,119,118,117,127,126,125,136,135,134,144,143,142,152,151,150,161,160,159,121,120,130,128,138,137,146
+,145,155,153,163,162,124,123,122,133,132,131,141,140,139,149,148,147,158,157,156,166,165,164,453,452,451,462,461,
+460,470,469,468,478,477,476,487,486,485,495,494,493,450,449,459,457,467,466,475,474,484,482,492,491,448,447,446,
+456,455,454,465,464,463,473,472,471,461,460,459,490,489,488,200,199,198,209,208,207,217,216,215,225,224,223,234,233
+,232,242,241,240,197,196,206,204,214,213,222,221,231,229,239,238,195,194,193,203,201,212,211,210,220,219,218,228,
+227,226,237,236,235]
+for i in border_colors:
+	solid_apartment[i] = COLOR([0.6,0.16,0])(solid_apartment[i])
+
+"adding color to the room walls"
+
+room_walls = [268,279,278,280,281,282,270,274,273,275,276,277,271,169,171,168,167,170,429,272,269,40,52,
+53,107,104,105,106,108,41,47,49,50,51,48,192,190,189,188,191]
+
+for i in room_walls:
+	solid_apartment[i] = COLOR([1,0.7,0.45])(solid_apartment[i])
+
+"adding color to the external walls"
+
+ext_walls = [8,4,434,432,431,430,433,435,436,437,103,180,181,182,183,184,185,186,187,12,438,439,440,441,442,443,444,445,28,
+172,173,174,175,176,177,178,179,27,39,42,43,44,45,46,37,15,17,19,18,38,3,114,115,116,112,113,109,110,111,0,1,2,546,
+547,548,549,550,551,552,553,554,11,26,25,24,23,36,35,34,17,16,101,100,102]	
+for i in ext_walls:
+	solid_apartment[i] = COLOR([1,0.64,0])(solid_apartment[i])
+
+ground_borders=[13,20,21,22,29,30,31,32,33,14,10,7,6,5]
+for i in ground_borders:
+	solid_apartment[i] = COLOR([0.4,.4,.4])(solid_apartment[i])
+
+
+#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
+#VIEW(hpc)
+
+
+#VIEW(STRUCT(solid_apartment))
+
+specular_apartment = solid_apartment
+
+specular_apartment = T([2])([3.4])(R([1,3])(PI)(R([1,2])(PI)(STRUCT((solid_apartment)))))
