@@ -338,6 +338,7 @@ ground_borders=[16,17,18,0,1,2,8,12,27,26,25,24,23,11]
 for i in ground_borders:
 	solid_apartment[i] = COLOR([0.4,.4,.4])(solid_apartment[i])
 
+V,FV = apartment;
 
 #hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
 #hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
