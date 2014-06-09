@@ -278,10 +278,10 @@
     this.animated = function() { 
       lamp_base.position.set(position.x,position.y,position.z);
       cylinder.rotation.y=3.85;
-      joint.rotation.z=0.4;
-      joint2.rotation.z=1.02; 
+      joint.rotation.z=-0.4;
+      joint2.rotation.z=-1.02; 
       cylinder2.rotation.y=3.2;
-      cylinder3.rotation.z=0.1;
+      cylinder3.rotation.z=-0.1;
       ball.position.set(5,5,1);
       animator.start(); 
 
@@ -289,10 +289,10 @@
     }
     this.reset = function() {
       cylinder.rotation.y=3.85;
-      joint.rotation.z=0.4;
-      joint2.rotation.z=1.02; 
+      joint.rotation.z=-0.4;
+      joint2.rotation.z=-1.02; 
       cylinder2.rotation.y=3.2;
-      cylinder3.rotation.z=0.1;
+      cylinder3.rotation.z=-0.1;
       ball.position.set(5,5,1);
       lamp_base.position.set(0,0,-5);
     }

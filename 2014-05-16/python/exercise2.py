@@ -151,4 +151,4 @@ structure = STRUCT([T([1,2,3])([10.8,0,-4.5])(atrium),structure])
 
 "Building solid form"
 
-#VIEW(structure)
+VIEW(structure)

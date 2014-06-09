@@ -345,6 +345,6 @@ V,FV = apartment;
 #VIEW(hpc)
 
 
-#VIEW(STRUCT(solid_apartment))
+VIEW(STRUCT(solid_apartment))
 
 
