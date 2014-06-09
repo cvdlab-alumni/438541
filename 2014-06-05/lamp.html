@@ -42,12 +42,12 @@
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 1);
    
     directionalLight.position.set( 0, 0, 20); 
-    directionalLight.intensity = 0.5;
+    directionalLight.intensity = 0.2;
     
     scene.add( directionalLight );
 
    var geometry = new THREE.PlaneGeometry( 20, 20, 200, 200); 
-   var material = new THREE.MeshLambertMaterial( {color: 0xb2b2b2} ); 
+   var material = new THREE.MeshPhongMaterial( {color: 0xb2b2b2, metal:true, shiness:100, specular:0xffffff} ); 
    var plane = new THREE.Mesh( geometry, material ); 
    plane.receiveShadow = true;
    scene.add( plane );
@@ -78,7 +78,8 @@
   lamp_head = new THREE.Object3D();
   lamp_head.add(mesh);
   lamp_head.add(mesh2);
-  
+  mesh.castShadow=true;
+  mesh2.castShadow=true;  
   
 
 
@@ -117,6 +118,7 @@
   
   var lamp_base = new THREE.Mesh( new THREE.LatheGeometry( points2, 30, 0, 2*Math.PI), 
   new THREE.MeshPhongMaterial( { color: 0xb2b2b2, side: THREE.DoubleSide, metal:true, shiness:100, specular: 0xffffff} )); 
+  lamp_base.castShadow=true;
 
   shape = new THREE.Shape();
   shape.moveTo(0,0);
@@ -130,12 +132,13 @@
     
   var joint = new THREE.Mesh(geometry,meshMaterial);
   joint.position.set(-.1,0,-.05);
-  
+  joint.castShadow=true;
 
   var geometry = new THREE.CylinderGeometry( .05, .05, .3, 32 ); 
   var material = new THREE.MeshPhongMaterial( {color: 0xfff000, side: THREE.DoubleSide} ); 
   var cylinder = new THREE.Mesh( geometry, material ); 
   cylinder.rotation.x= Math.PI/2;
+  cylinder.castShadow=true;
 
   shape = new THREE.Shape();
   shape.moveTo(0,0);
@@ -149,6 +152,7 @@
     
   var connection = new THREE.Mesh(geometry,meshMaterial);
   connection.rotation.y= Math.PI/2;
+  connection.castShadow=true;
   //connection.rotation.x= Math.PI/2;
   connection.position.set(0,.3,0.075);
 
@@ -172,11 +176,12 @@
     
   var joint2 = new THREE.Mesh(geometry,meshMaterial);
   joint2.position.set(-.1,0,-.05);
-  
+  joint2.castShadow=true;
 
   var geometry = new THREE.CylinderGeometry( .35, .35, .1, 32 ); 
   var material = new THREE.MeshPhongMaterial( {color: 0xfff000, side: THREE.DoubleSide} ); 
   var cylinder2 = new THREE.Mesh( geometry, material ); 
+  cylinder2.castShadow = true;
  
 
   shape = new THREE.Shape();
@@ -191,6 +196,7 @@
     
   var connection1 = new THREE.Mesh(geometry,meshMaterial);
   connection1.rotation.y= Math.PI/2;
+  connection1.castShadow=true;
   //connection.rotation.x= Math.PI/2;
   connection1.position.set(0,.3,0.075);
 
@@ -216,9 +222,10 @@
   var geometry = new THREE.ExtrudeGeometry([shape],{amount : 0.1, bevelEnabled: false});
   var meshMaterial = new THREE.MeshPhongMaterial( { color: 0x000fff, side: THREE.DoubleSide} );
     
+
   var joint3 = new THREE.Mesh(geometry,meshMaterial);
   joint3.rotation.z=Math.PI;
-
+  joint3.castShadow=true;
 
    lamp_head.scale.x= 0.3;
   lamp_head.scale.y= 0.3;
@@ -232,6 +239,7 @@
   var material = new THREE.MeshPhongMaterial( {color: 0xfff000, side: THREE.DoubleSide} ); 
   var cylinder3 = new THREE.Mesh( geometry, material );    
   cylinder3.position.set(0.1,0,.05);
+  cylinder3.castShadow=true;
   
   joint3.position.set(0.4,2.65,-0.01); 
   
@@ -321,6 +329,18 @@
     spotLight.visible = value;
     pointLight.visible = value;
     ball.castShadow = value;
+    joint.castShadow=value;
+    joint2.castShadow=value;
+    joint3.castShadow=value;
+    connection.castShadow=value;
+    connection1.castShadow=value;
+    connection12.castShadow=value;
+    connection2.castShadow=value;
+    cylinder3.castShadow=value;
+    cylinder2.castShadow=value;
+    cylinder.castShadow=value;
+    mesh.castShadow=value;
+    mesh2.castShadow=value;
      
      
   }); 
