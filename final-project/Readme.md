@@ -4,6 +4,8 @@
 Alessio Cialini - 438541
 --------------------------
 
+Click [here](http://alexyey.github.io) to see project
+
 **Code organization :**
 
 * [index](index.html) scripts recall and rendering.
