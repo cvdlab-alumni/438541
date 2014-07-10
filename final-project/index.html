@@ -1,0 +1,162 @@
+<head> 
+  <title>438541 - Final Project</title> 
+  <style>
+    body{
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #stats {  /* Align stats top-left */
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+  </style> 
+  </head>
+  <body> 
+      <div id="container"></div>
+  <!-- JavaScript libraries -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+  <script src="assets/libs/TrackballControls.js"></script>
+   <script src="assets/libs/TrackballControls.js"></script>
+  <script src="assets/libs/Mirror.js"></script>
+  <script src="assets/libs/keyframe.js"></script>
+  <script src="assets/libs/OBJLoader.js"></script>
+  <script src="assets/libs/OBJMTLLoader.js"></script>
+  <script src="assets/libs/MTLLoader.js"></script>
+  <script src="assets/libs/FirstPersonControls.js"></script>
+  <script src="assets/libs/ParticleEngine.js"></script>
+  <script src="assets/libs/ParticleEngineExamples.js"></script>
+  <script src="assets/libs/chroma.js"></script>
+  <script src="assets/js/apartment.js"></script>
+  <script src="assets/js/init.js"></script>
+  <script src="assets/js/bathroom.js"></script>
+  <script src="assets/js/living_room.js"></script>
+  <script src="assets/js/bedroom.js"></script>
+  <script src="assets/js/bedroom2.js"></script>
+  <script src="assets/js/hall_kitchen.js"></script>
+  <script src="assets/js/hall.js"></script>
+  <script src="assets/js/external.js"></script>
+  <script src="assets/js/closet.js"></script>
+  <script src="assets/js/lights.js"></script>
+  <script src="assets/js/object_import.js"></script>
+  <script src="assets/js/control_panel.js"></script>
+  <script src="assets/js/robot.js"></script>
+  <script src="assets/js/skybox.js"></script>
+  <script src="assets/js/video.js"></script>
+  <script src="assets/js/audio.js"></script>
+  <script src="assets/js/screen.js"></script>
+  <script src="assets/js/events.js"></script>
+  <script src="assets/js/makeFrame.js"></script>
+  <script src="assets/js/lamp.js"></script>
+
+  <!-- Javascript code that runs our Three.js examples --> 
+  <script>
+  $(function () {
+    
+
+        
+   
+   
+
+  container = document.createElement( 'div' );
+  document.body.appendChild( container );
+  
+
+
+  init();
+
+
+  $('body').append(renderer.domElement);
+
+
+   
+
+ 
+  initStructure();
+  //control panel init
+  initControls()  
+  //adding textures & scene elements
+  hall(objects, scene);
+  bathroom(objects,scene);
+  living_room(objects,scene);
+  bedroom(objects,scene);
+  bedroom2(objects,scene);
+  external(scene);
+  kitchen(objects,scene);
+  closet(objects,scene);
+  importObjects(scene,objects2);
+  makeVideo(scene,objects2);
+  makeAudio(scene,objects2);
+  robot(scene,objects2);
+  makeScreenSaver(scene,objects2);
+  makeFrame(scene);
+  makeLamp(scene);
+  // adding lights & light control system
+  external_lights(scene);
+  hall_light(scene);
+  kitchen_light(scene);
+  bedroom2_light(scene);
+  bathroom_light(scene);
+  bedroom_light(scene);
+  livroom_light(scene);
+  light_switch(scene,objects2);
+  closet_light(scene);
+  //adding other elements
+  dayBox(scene);
+  nightBox(scene);
+
+
+  engine = new ParticleEngine();
+  engine.setValues( Examples.clouds );
+  engine.initialize();
+
+  renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
+  renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
+  renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
+  window.addEventListener( 'resize', onWindowResize, false );
+  cleaner = getRobot();
+  step= -Math.PI;
+  render();
+
+  function render() {
+      var delta = clock.getDelta();
+      updateAudio();
+      updateVideo();
+      boomer.update(10);
+      engine.update(delta * 0.5);
+      step += 0.02;
+      if (panel.switch_control){
+          renderer.clear();
+       if (controls.enabled)
+        controls.update(delta);
+      } else {
+        controls.update();
+      }
+      update_sl_position(step);
+      updateSkybox(scene);
+     
+      if (panel.update_mirror) {
+      mirror.visible=false;
+      verticalMirror.render();
+      mirror.visible=true;
+      }
+      if (panel.robot_view){
+      controls.enabled = false;
+      extcamera.lookAt(sphereSightMesh.position)
+      } else {
+      controls.enabled = true;
+      }
+      KF.update();
+      requestAnimationFrame(render);
+      renderer.render(scene, extcamera);
+      
+    }
+    
+   });
+    </script>  
+ </body>
+</html> 

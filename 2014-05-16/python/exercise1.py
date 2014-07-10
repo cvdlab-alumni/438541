@@ -88,10 +88,10 @@ apartment = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
 
 "Adding structure to the first splitted room"
 
+
 toMerge=17
 rem_col_1 = assemblyDiagramInit([3,1,1])([[4.2,.25,4.2],[.4],[.4]])
 apartment = diagram2cell(rem_col_1,apartment,toMerge)
-
 
 toMerge=47
 rem_col_2 = assemblyDiagramInit([3,1,1])([[4.2,.25,4.2],[.4],[.4]])
@@ -293,9 +293,9 @@ door_colors = [406,405,404,415,414,413,422,421,420,425,424,423,409,408,407,428,4
 for i in door_colors:
 	solid_apartment[i] = COLOR([0.7,0.3,0])(solid_apartment[i])
 
-#hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
-#hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
-#VIEW(hpc)	
+hpc = SKEL_1(STRUCT(MKPOLS(apartment)))
+hpc = cellNumbering (apartment,hpc)(range(len(apartment[1])),CYAN,1)
+VIEW(hpc)	
 
 border_colors=[74,75,76,65,66,67,60,61,62,71,72,73,57,58,59,68,69,70,54,55,56,91,92,93,77,78,79,80,81,82,
 94,95,96,97,98,99,83,84,85,88,89,90,289,290,291,294,295,296,303,304,305,286,287,288,300,301,302,283,284,
