@@ -9,7 +9,7 @@ Alessio Cialini - 438541
 * [index](index.html) scripts recall and rendering.
 * [init](assets/js/init.js) creates basical elements such as cameras, renderer. it also creates the external floor, and the elements used for basical raycasting and object picking.
 * [control_panel] (assets/js/control_panel.js) creates the control panel and intizialize the control parameters
-* the functions [bathroom](assets/js/bathroom.js),[kitchen](assets/js/hall_kitchen.js),[bedroom](assets/js/bedroom.js),[bedroom2](assets/js/bedroom2),[living_room](assets/js/living_room.js),[closet](assets(js/closet.js) and [external](assets/js/external.js) add some basical details to rooms and external elements of the apartment, such as textures, windows and doors.
+* the functions [bathroom](assets/js/bathroom.js),[kitchen](assets/js/hall_kitchen.js),[bedroom](assets/js/bedroom.js),[bedroom2](assets/js/bedroom2),[living_room](assets/js/living_room.js),[closet](assets/js/closet.js) and [external](assets/js/external.js) add some basical details to rooms and external elements of the apartment, such as textures, windows and doors.
 * [import_objects](assets/js/import_objects.js) used to import all of the .obj files added in the scene.
 * [makeVideo](assets/js/video.js) creates and manage the status of some videos imported and rendered in the scene with proper interactions.
 * [makeAudio](assets/js/audio.js) creates and manage the status of some audio files and played during the rendering with proper interactions.

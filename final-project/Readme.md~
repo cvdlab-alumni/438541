@@ -27,5 +27,17 @@ Alessio Cialini - 438541
 * STATIC TEXTURES AND BUMP MAPS for several elements such as floors, walls, windows, doors and wall lamps. 
 * KEYFRAME for robot and door animations
 * VIDEO TEXTURE for the tv screen
+* AUDIO for the mp3 base player
+* SKYBOX with day/night switch
+* AUDIO FADING for video and audio elements
+* DIRECTIONAL LIGHT + AMBIENT LIGHT for day/night effect
+* CONTROL PANEL
+* OBJ + MTL IMPORT for room detailing
+* **AUTOMATIZED ROOM LIGHTS** 
 * **MIRROR EFFECT** 
-* 
+* **FIRST PERSON CAMERA** with camera switch controls
+* **FIXED CAMERA** for robot view
+* **PARTICLE ENGINE** for clouds
+* **OBJECT PICKING** for element interactions
+* **OBJECT CONTROL** for mouse control door and windows opening
+
